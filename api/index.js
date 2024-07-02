@@ -1,4 +1,5 @@
 import express, { json } from 'express';
+import cors from 'cors';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import userRoutes from './routes/user.route.js';
@@ -17,6 +18,7 @@ mongoose.connect(process.env.MONGO).then(() => {
 
 const app = express();
 
+app.use(cors()); // Enable CORS
 app.use(express.json()); // Parse JSON bodies
 
 app.listen(3000, () => {
